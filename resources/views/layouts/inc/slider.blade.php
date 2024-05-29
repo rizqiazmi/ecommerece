@@ -7,14 +7,14 @@
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="{{ asset('assets/images/slider.jpg') }}" class="w-100" height="80vh !important" alt="...">
+        <img src="{{ asset('assets/images/slider.jpg') }}" class="w-100" height="400px !important" alt="...">
       </div>
     
       <div class="carousel-item">
-        <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block w-100" height="80vh !important" alt="...">
+        <img src="{{ asset('assets/images/slider.jpg') }}" class="w-100" height="400px !important" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="{{ asset('assets/images/slider.jpg') }}" class="d-block w-100" height="80vh !important" alt="...">
+        <img src="{{ asset('assets/images/slider.jpg') }}" class="w-100" height="400px !important" alt="...">
       </div>
     
       
