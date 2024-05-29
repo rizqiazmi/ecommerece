@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -23,8 +24,7 @@ class CategoryController extends Controller
     public function insert(Request $request)
     {
         $category = new Category();
-        if ($request->hasFile('image')) 
-        {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time() . '.' . $ext;
@@ -50,10 +50,17 @@ class CategoryController extends Controller
         return view('admin.category.edit', compact('category'));
     }
 
+    public function edit_product($id)
+    {
+        $products = Product::find($id);
+        return view('admin.product.edit', compact('products'));
+    }
+
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) 
+        {
             $path = 'assets/uploads/category/' . $category->image;
             if (File::exists($path)) {
                 File::delete($path);
@@ -73,21 +80,32 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->input('meta_keywords');
         $category->meta_descrip = $request->input('meta_description');
         $category->update();
-        return redirect('dashboard')->with('status',"Category Updated Successfully");
+        return redirect('dashboard')->with('status', "Category Updated Successfully");
     }
 
     public function destroy($id)
     {
         $category = Category::find($id);
-        if($category->image)
-        {
-            $path = 'assets/uploads/category/'.$category->image;
-            if(File::exists($path))
-            {
+        if ($category->image) {
+            $path = 'assets/uploads/category/' . $category->image;
+            if (File::exists($path)) {
                 File::delete($path);
             }
         }
         $category->delete();
-        return redirect('categories')->with('status',"Category Deleted Successfully");
+        return redirect('categories')->with('status', "Category Deleted Successfully");
+    }
+
+    public function destroy_prod($id)
+    {
+        $category = Product::find($id);
+        if ($category->image) {
+            $path = 'assets/uploads/products/' . $category->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+        }
+        $category->delete();
+        return redirect('products')->with('status', "Product Deleted Successfully");
     }
 }

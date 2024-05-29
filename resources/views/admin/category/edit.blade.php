@@ -45,7 +45,7 @@
                         <textarea name="meta_description" rows="3" class="form-control"> {{ $category->meta_descrip }} </textarea>
                     </div>
                     @if($category->image)
-                        <img src="{{ asset('assets/uploads/category/'.$category->image) }}" alt="Category image">
+                        <img src="{{ asset('assets/uploads/category/'.$category->image) }}" alt="Category image" width="400" height="400">
                     @endif
                     <div class="col-md-12">
                         <input type="file" name="image" class="form-control">
