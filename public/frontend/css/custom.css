@@ -1,0 +1,5 @@
+.carousel-item img {
+    max-height: 80vh;
+    padding-bottom: 10px;
+    /* object-fit: cover; */
+}
