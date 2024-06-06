@@ -19,7 +19,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+/*  */
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('category', [FrontendController::class, 'category']);
 Route::get('category/{slug}', [FrontendController::class, 'viewcategory']);
@@ -27,6 +27,8 @@ Route::get('category/{slug}', [FrontendController::class, 'viewcategory']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/rekomendasi', [App\Http\Controllers\RekomendasiController::class, 'index']);
+Route::post('/process-answers', [App\Http\Controllers\RekomendasiController::class, 'processAnswers'])->name('process.answers');
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/dashboard', 'Admin\FrontendController@index');
